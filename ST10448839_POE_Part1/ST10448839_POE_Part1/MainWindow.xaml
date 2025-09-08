@@ -1,0 +1,135 @@
+﻿<Window x:Class="CMCS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Contract Monthly Claim System (CMCS)"
+        Height="700" Width="1050"
+        WindowStartupLocation="CenterScreen"
+        Background="#f8f9fa">
+
+    <Grid Margin="10">
+        <!-- Header -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock Text="Contract Monthly Claim System"
+                       FontSize="24" FontWeight="Bold" Foreground="#1f4e79"/>
+            <TextBlock Text="Prototype GUI - Frontend only (non-functional)"
+                       FontSize="14" Foreground="Gray"/>
+        </StackPanel>
+
+        <!-- Tabs -->
+        <TabControl Margin="0,60,0,0">
+
+            <!-- Submit Claim Tab -->
+            <TabItem Header="Submit Claim">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Claim Info -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.Row="0">
+                        <Label Content="Select Month:" VerticalAlignment="Center"/>
+                        <DatePicker Width="150" Margin="5,0"/>
+                        <Label Content="Status:" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                        <Label Content="Draft" Background="Gray" Foreground="White" Padding="5,2" Margin="5,0"/>
+                    </StackPanel>
+
+                    <!-- Claim Data Grid -->
+                    <DataGrid AutoGenerateColumns="False" Grid.Row="1" Height="350" Margin="0,0,0,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Activity" Width="*" />
+                            <DataGridTextColumn Header="Hours" Width="*" />
+                            <DataGridTextColumn Header="Rate (ZAR)" Width="*" />
+                            <DataGridTextColumn Header="Notes" Width="2*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Buttons -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                        <Button Content="Add Row" Width="100" Margin="5,0"/>
+                        <Button Content="Attach Document" Width="150" Margin="5,0"/>
+                        <Button Content="Save Draft" Width="100" Margin="5,0"/>
+                        <Button Content="Submit Claim" Width="150" Margin="5,0"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Claim History Tab -->
+            <TabItem Header="Claim History">
+                <Grid Margin="10">
+                    <Label Content="Track Claim Status" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <DataGrid AutoGenerateColumns="False" Height="450">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Claim ID" Width="*" />
+                            <DataGridTextColumn Header="Month" Width="*" />
+                            <DataGridTextColumn Header="Status" Width="*" />
+                            <DataGridTextColumn Header="Submitted At" Width="*" />
+                            <DataGridTextColumn Header="Approved By" Width="*" />
+                            <DataGridTemplateColumn Header="Details">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="View" Width="70"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Review Queue Tab -->
+            <TabItem Header="Review Queue">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header -->
+                    <Label Content="Verification &amp; Approval (Programme Coordinators &amp; Academic Managers)"
+               FontSize="16" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0"/>
+
+                    <!-- Data Grid -->
+                    <DataGrid AutoGenerateColumns="False" Height="400" Margin="0,0,0,10" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Claim ID" Width="*" />
+                            <DataGridTextColumn Header="Lecturer" Width="*" />
+                            <DataGridTextColumn Header="Month" Width="*" />
+                            <DataGridTextColumn Header="Status" Width="*" />
+                            <DataGridTextColumn Header="Submitted At" Width="*" />
+                            <DataGridTemplateColumn Header="Actions">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="View" Width="70"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Action Buttons at Bottom -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                        <Button Content="Verify" Width="120" Margin="5,0"/>
+                        <Button Content="Approve" Width="120" Margin="5,0"/>
+                        <Button Content="Reject" Width="120" Margin="5,0"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+            <!-- System Info Tab -->
+            <TabItem Header="System Info">
+                <StackPanel Margin="10">
+                    <TextBlock Text="System Reliability &amp; Transparency" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock Text="• The system ensures consistent &amp; reliable information for all users." Margin="0,0,0,5"/>
+                    <TextBlock Text="• Claims can be submitted, tracked, &amp; reviewed transparently." Margin="0,0,0,5"/>
+                    <TextBlock Text="• All roles (Lecturers, Programme Coordinators, and Academic Managers) access the same accurate claim data." Margin="0,0,0,5"/>
+                    <TextBlock Text="• Data integrity is maintained through clear statuses: Draft, Submitted, Verified, Approved, Rejected, Settled." Margin="0,0,0,5"/>
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
